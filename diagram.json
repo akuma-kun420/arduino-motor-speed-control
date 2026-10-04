@@ -1,0 +1,121 @@
+{
+  "version": 1,
+  "author": "Innocent Zero",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-breadboard-mini",
+      "id": "bb1",
+      "top": 85,
+      "left": 333.6,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-arduino-uno",
+      "id": "uno",
+      "top": 39,
+      "left": 18.6,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot1",
+      "top": -10.9,
+      "left": 393.4,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -3.6,
+      "left": 647,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 63.6,
+      "left": 647,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 42.35,
+      "left": 585.6,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 99.95,
+      "left": 576,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "chip-l298n",
+      "id": "driver1",
+      "top": 135.42,
+      "left": 552,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dc-motor",
+      "id": "motor1",
+      "top": 350,
+      "left": 700,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    ["driver1:OUT1", "motor1:A+", "blue", []],
+    ["driver1:OUT2", "motor1:A-", "blue", []],
+    ["uno:5V", "bb1:1t.a", "red", ["v47.9", "h138.2", "v-182.4"]],
+    [
+      "uno:GND.1",
+      "bb1:17b.j",
+      "black",
+      ["v-28.8", "h192.3", "v201.6", "h172.8"]
+    ],
+    ["pot1:VCC", "bb1:2t.a", "red", ["v9.6", "h-87.2"]],
+    ["pot1:GND", "bb1:16b.j", "black", ["v19.2", "h96", "v153.6", "h-28.8"]],
+    [
+      "pot1:SIG",
+      "uno:A0",
+      "green",
+      ["v19.2", "h-67.6", "h-57.6", "v172.8", "h-80.6"]
+    ],
+    [
+      "driver1:EN A",
+      "uno:9",
+      "green",
+      ["h-28.8", "v-172.8", "h-345.6", "v9.6"]
+    ],
+    ["driver1:IN1", "uno:8", "green", ["h-9.6", "v-192", "h-355.2"]],
+    ["driver1:IN2", "uno:7", "green", ["h-19.2", "v-211.2", "h-336"]],
+    [
+      "driver1:5V",
+      "bb1:3t.a",
+      "red",
+      ["h30.61", "v-28.8", "h-134.4", "v-57.6", "h-76.8", "v-86.4", "h-115.2"]
+    ],
+    ["driver1:GND", "bb1:15b.j", "black", ["h21.01", "v96", "h-201.6"]],
+    ["r1:1", "uno:5", "green", ["v-105.6", "h-355.2"]],
+    ["led1:A", "r1:2", "green", ["v0", "h9.6", "v9.6"]],
+    ["r2:1", "uno:6", "green", ["v-172.8", "h-358.9"]],
+    ["led2:A", "r2:2", "green", ["v0", "h9.6", "v9.6", "h-48"]],
+    [
+      "led1:C",
+      "uno:GND.3",
+      "green",
+      ["v0", "h-9.2", "v-48", "h48", "v278.4", "h-499.2"]
+    ],
+    [
+      "led2:C",
+      "uno:GND.2",
+      "green",
+      ["v0", "h-9.2", "v-38.4", "h48", "v0", "h9.6", "v192", "h-528"]
+    ]
+  ],
+  "dependencies": { "chip-l298n": "github:drf5n/Wokwi-Chip-L298N@1.0.5" }
+}
